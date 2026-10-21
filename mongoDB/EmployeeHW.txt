@@ -1,0 +1,6 @@
+## Question :-
+Create an employee collection with employee related data like employee name, department, salary and age
+-> find department wise average salary
+-> find second highest salary department wise (use match)
+
+## Answer :-

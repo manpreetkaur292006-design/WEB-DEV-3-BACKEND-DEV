@@ -1,0 +1,458 @@
+Microsoft Windows [Version 10.0.26300.9711]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\MANPREET KAUR>mongosh
+Current Mongosh Log ID: 6ad8eccdac61a99ceb5762a9
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.12.0
+Using MongoDB:          8.3.11
+Using Mongosh:          2.12.0
+mongosh 2.13.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-10-19T11:21:57.695+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+admin     40.00 KiB
+college   72.00 KiB
+config    72.00 KiB
+local     72.00 KiB
+students  72.00 KiB
+test> use college
+switched to db college
+college> db.students.insertOne({
+| name:"Arvind",
+| age:18,
+| course:"BA",
+| city:"Jalandhar"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6ad8ed38ac61a99ceb5762aa')
+}
+college> db.students.insertMany([{name:"Manu",age:20},{name:"Manni",age:20},{name:"Bindu",age:18}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6ad8ed7bac61a99ceb5762ab'),
+    '1': ObjectId('6ad8ed7bac61a99ceb5762ac'),
+    '2': ObjectId('6ad8ed7bac61a99ceb5762ad')
+  }
+}
+college> db.students.find()
+[
+  {
+    _id: ObjectId('6aba11be1b63b5899d63e54d'),
+    name: 'Manpreet',
+    age: 20,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    sem: 3,
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6abcd0817a664a1af0d9d108'),
+    name: 'Shivani',
+    age: 21,
+    course: 'B.Tech CSE',
+    city: 'Adampur',
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6abcd0817a664a1af0d9d109'),
+    name: 'Bhavneet',
+    age: 21,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6abcd0817a664a1af0d9d10a'),
+    name: 'Arvind',
+    age: 18,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6abcd6eb7a664a1af0d9d10c'),
+    name: 'XYZ',
+    age: 18,
+    course: 'B.Tech CSE',
+    city: 'Delhi',
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6abcd7037a664a1af0d9d10d'),
+    name: 'MNO',
+    age: 25,
+    course: 'B.Tech CSE',
+    city: 'Adampur',
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6ad7154f557b23d43849ea6b'),
+    name: 'Manpreet',
+    age: 20,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    sem: 3
+  },
+  {
+    _id: ObjectId('6ad715c4557b23d43849ea6c'),
+    name: 'ABC',
+    course: 'BCA',
+    age: 18
+  },
+  {
+    _id: ObjectId('6ad715c4557b23d43849ea6d'),
+    name: 'XYZ',
+    course: 'BA',
+    age: 25
+  },
+  {
+    _id: ObjectId('6ad71ae7557b23d43849ea6f'),
+    name: 'Test',
+    age: 31,
+    skills: [ 'Javascript', 'React', 'NodeJS' ]
+  },
+  {
+    _id: ObjectId('6ad71b30557b23d43849ea70'),
+    name: 'Test',
+    age: 31,
+    address: { city: 'Jalandhar', state: 'Punjab', pin: 144301 }
+  },
+  {
+    _id: ObjectId('6ad8ed38ac61a99ceb5762aa'),
+    name: 'Arvind',
+    age: 18,
+    course: 'BA',
+    city: 'Jalandhar'
+  },
+  { _id: ObjectId('6ad8ed7bac61a99ceb5762ab'), name: 'Manu', age: 20 },
+  { _id: ObjectId('6ad8ed7bac61a99ceb5762ac'), name: 'Manni', age: 20 },
+  { _id: ObjectId('6ad8ed7bac61a99ceb5762ad'), name: 'Bindu', age: 18 }
+]
+college> db.students.find({name:"Manpreet"})
+[
+  {
+    _id: ObjectId('6aba11be1b63b5899d63e54d'),
+    name: 'Manpreet',
+    age: 20,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    sem: 3,
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6ad7154f557b23d43849ea6b'),
+    name: 'Manpreet',
+    age: 20,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    sem: 3
+  }
+]
+college> db.students.findOne({name:"Manpreet"})
+{
+  _id: ObjectId('6aba11be1b63b5899d63e54d'),
+  name: 'Manpreet',
+  age: 20,
+  course: 'B.Tech CSE',
+  city: 'Jalandhar',
+  sem: 3,
+  department: 'SOET',
+  semester: 4
+}
+college> db.students.find({age:{$gt:18}})
+[
+  {
+    _id: ObjectId('6aba11be1b63b5899d63e54d'),
+    name: 'Manpreet',
+    age: 20,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    sem: 3,
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6abcd0817a664a1af0d9d108'),
+    name: 'Shivani',
+    age: 21,
+    course: 'B.Tech CSE',
+    city: 'Adampur',
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6abcd0817a664a1af0d9d109'),
+    name: 'Bhavneet',
+    age: 21,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6abcd7037a664a1af0d9d10d'),
+    name: 'MNO',
+    age: 25,
+    course: 'B.Tech CSE',
+    city: 'Adampur',
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6ad7154f557b23d43849ea6b'),
+    name: 'Manpreet',
+    age: 20,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    sem: 3
+  },
+  {
+    _id: ObjectId('6ad715c4557b23d43849ea6d'),
+    name: 'XYZ',
+    course: 'BA',
+    age: 25
+  },
+  {
+    _id: ObjectId('6ad71ae7557b23d43849ea6f'),
+    name: 'Test',
+    age: 31,
+    skills: [ 'Javascript', 'React', 'NodeJS' ]
+  },
+  {
+    _id: ObjectId('6ad71b30557b23d43849ea70'),
+    name: 'Test',
+    age: 31,
+    address: { city: 'Jalandhar', state: 'Punjab', pin: 144301 }
+  },
+  { _id: ObjectId('6ad8ed7bac61a99ceb5762ab'), name: 'Manu', age: 20 },
+  { _id: ObjectId('6ad8ed7bac61a99ceb5762ac'), name: 'Manni', age: 20 }
+]
+college> db.students.find({},{name:1,city:1})
+[
+  {
+    _id: ObjectId('6aba11be1b63b5899d63e54d'),
+    name: 'Manpreet',
+    city: 'Jalandhar'
+  },
+  {
+    _id: ObjectId('6abcd0817a664a1af0d9d108'),
+    name: 'Shivani',
+    city: 'Adampur'
+  },
+  {
+    _id: ObjectId('6abcd0817a664a1af0d9d109'),
+    name: 'Bhavneet',
+    city: 'Jalandhar'
+  },
+  {
+    _id: ObjectId('6abcd0817a664a1af0d9d10a'),
+    name: 'Arvind',
+    city: 'Jalandhar'
+  },
+  {
+    _id: ObjectId('6abcd6eb7a664a1af0d9d10c'),
+    name: 'XYZ',
+    city: 'Delhi'
+  },
+  {
+    _id: ObjectId('6abcd7037a664a1af0d9d10d'),
+    name: 'MNO',
+    city: 'Adampur'
+  },
+  {
+    _id: ObjectId('6ad7154f557b23d43849ea6b'),
+    name: 'Manpreet',
+    city: 'Jalandhar'
+  },
+  { _id: ObjectId('6ad715c4557b23d43849ea6c'), name: 'ABC' },
+  { _id: ObjectId('6ad715c4557b23d43849ea6d'), name: 'XYZ' },
+  { _id: ObjectId('6ad71ae7557b23d43849ea6f'), name: 'Test' },
+  { _id: ObjectId('6ad71b30557b23d43849ea70'), name: 'Test' },
+  {
+    _id: ObjectId('6ad8ed38ac61a99ceb5762aa'),
+    name: 'Arvind',
+    city: 'Jalandhar'
+  },
+  { _id: ObjectId('6ad8ed7bac61a99ceb5762ab'), name: 'Manu' },
+  { _id: ObjectId('6ad8ed7bac61a99ceb5762ac'), name: 'Manni' },
+  { _id: ObjectId('6ad8ed7bac61a99ceb5762ad'), name: 'Bindu' }
+]
+college> db.students.updateOne({name:"Manpreet"},{$set:{sem:4}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+college> db.students.updateMany({course:"B.Tech CSE"},{$set:{department:"SOET"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 7,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+college> db.students.deleteOne({name:"XYZ"})
+{ acknowledged: true, deletedCount: 1 }
+college> db.students.find().sort({age:-1})
+[
+  {
+    _id: ObjectId('6ad71ae7557b23d43849ea6f'),
+    name: 'Test',
+    age: 31,
+    skills: [ 'Javascript', 'React', 'NodeJS' ]
+  },
+  {
+    _id: ObjectId('6ad71b30557b23d43849ea70'),
+    name: 'Test',
+    age: 31,
+    address: { city: 'Jalandhar', state: 'Punjab', pin: 144301 }
+  },
+  {
+    _id: ObjectId('6abcd7037a664a1af0d9d10d'),
+    name: 'MNO',
+    age: 25,
+    course: 'B.Tech CSE',
+    city: 'Adampur',
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6ad715c4557b23d43849ea6d'),
+    name: 'XYZ',
+    course: 'BA',
+    age: 25
+  },
+  {
+    _id: ObjectId('6abcd0817a664a1af0d9d108'),
+    name: 'Shivani',
+    age: 21,
+    course: 'B.Tech CSE',
+    city: 'Adampur',
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6abcd0817a664a1af0d9d109'),
+    name: 'Bhavneet',
+    age: 21,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6aba11be1b63b5899d63e54d'),
+    name: 'Manpreet',
+    age: 20,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    sem: 4,
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6ad7154f557b23d43849ea6b'),
+    name: 'Manpreet',
+    age: 20,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    sem: 3,
+    department: 'SOET'
+  },
+  { _id: ObjectId('6ad8ed7bac61a99ceb5762ab'), name: 'Manu', age: 20 },
+  { _id: ObjectId('6ad8ed7bac61a99ceb5762ac'), name: 'Manni', age: 20 },
+  {
+    _id: ObjectId('6abcd0817a664a1af0d9d10a'),
+    name: 'Arvind',
+    age: 18,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    department: 'SOET',
+    semester: 4
+  },
+  {
+    _id: ObjectId('6ad715c4557b23d43849ea6c'),
+    name: 'ABC',
+    course: 'BCA',
+    age: 18
+  },
+  {
+    _id: ObjectId('6ad8ed38ac61a99ceb5762aa'),
+    name: 'Arvind',
+    age: 18,
+    course: 'BA',
+    city: 'Jalandhar'
+  },
+  { _id: ObjectId('6ad8ed7bac61a99ceb5762ad'), name: 'Bindu', age: 18 }
+]
+college> db.students.find().sort({age:-1}).limit(2)
+[
+  {
+    _id: ObjectId('6ad71b30557b23d43849ea70'),
+    name: 'Test',
+    age: 31,
+    address: { city: 'Jalandhar', state: 'Punjab', pin: 144301 }
+  },
+  {
+    _id: ObjectId('6ad71ae7557b23d43849ea6f'),
+    name: 'Test',
+    age: 31,
+    skills: [ 'Javascript', 'React', 'NodeJS' ]
+  }
+]
+college> db.students.countDocuments()
+14
+college> db.students.find({skills:"React"})
+[
+  {
+    _id: ObjectId('6ad71ae7557b23d43849ea6f'),
+    name: 'Test',
+    age: 31,
+    skills: [ 'Javascript', 'React', 'NodeJS' ]
+  }
+]
+college> db.students.find({"address.city":"Jalandhar"})
+[
+  {
+    _id: ObjectId('6ad71b30557b23d43849ea70'),
+    name: 'Test',
+    age: 31,
+    address: { city: 'Jalandhar', state: 'Punjab', pin: 144301 }
+  }
+]
+college> db.students.aggregate([
+| {$group:{
+| _id:"$course",
+| averageAge:{$avg:"$age"}}}])
+[
+  { _id: null, averageAge: 24 },
+  { _id: 'BCA', averageAge: 18 },
+  { _id: 'B.Tech CSE', averageAge: 20.833333333333332 },
+  { _id: 'BA', averageAge: 21.5 }
+]
+college> db.students.aggregate([ { $group: { _id: "$course", averageAge: { $avg: "$age" } } },{$sort:{averageAge:-1}}])
+[
+  { _id: null, averageAge: 24 },
+  { _id: 'BA', averageAge: 21.5 },
+  { _id: 'B.Tech CSE', averageAge: 20.833333333333332 },
+  { _id: 'BCA', averageAge: 18 }
+]
+college> db.students.aggregate([ { $group: { _id: "$course", averageAge: { $avg: "$age" } } },{$sort:{averageAge:-1}},{$limit:1}])
+[ { _id: null, averageAge: 24 } ]
+college>
