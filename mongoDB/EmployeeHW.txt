@@ -4,3 +4,151 @@ Create an employee collection with employee related data like employee name, dep
 -> find second highest salary department wise (use match)
 
 ## Answer :-
+
+icrosoft Windows [Version 10.0.26300.9711]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\MANPREET KAUR>mongosh
+Current Mongosh Log ID: 6ad8f126d87612eea4c6c291
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.12.0
+Using MongoDB:          8.3.11
+Using Mongosh:          2.12.0
+mongosh 2.13.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-10-19T11:21:57.695+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use employee
+switched to db employee
+employee> show dbs
+admin     40.00 KiB
+college   64.00 KiB
+config    96.00 KiB
+local     72.00 KiB
+students  72.00 KiB
+employee> use test
+switched to db test
+test> show dbs
+admin     40.00 KiB
+college   64.00 KiB
+config    96.00 KiB
+local     72.00 KiB
+students  72.00 KiB
+test> use employee
+switched to db employee
+employee> db.createCollection("emp")
+{ ok: 1 }
+employee> show collections
+emp
+employee> show dbs
+admin     40.00 KiB
+college   64.00 KiB
+config    96.00 KiB
+employee   8.00 KiB
+local     72.00 KiB
+students  72.00 KiB
+employee> db.emp.insertMany([
+| {name:"Manpreet",dept:"IT",salary:50000,age:20},
+| {name:"Arvind",dept:"Sales",salary:35000,age:18},
+| {name:"Mankirat",dept:"Cyber",salary:50000,age:20},
+| {name:"Shivani",dept:"Sales",salary:38000,age:21},
+| {name:"Shreya",dept:"IT",salary:50000,age:20},
+| {name:"Sakshi",dept:"HR",salary:80000,age:20},
+| {name:"Ravi",dept:"Sales",salary:38000,age:20}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6ad8f267d87612eea4c6c292'),
+    '1': ObjectId('6ad8f267d87612eea4c6c293'),
+    '2': ObjectId('6ad8f267d87612eea4c6c294'),
+    '3': ObjectId('6ad8f267d87612eea4c6c295'),
+    '4': ObjectId('6ad8f267d87612eea4c6c296'),
+    '5': ObjectId('6ad8f267d87612eea4c6c297'),
+    '6': ObjectId('6ad8f267d87612eea4c6c298')
+  }
+}
+employee> db.emp.find()
+[
+  {
+    _id: ObjectId('6ad8f267d87612eea4c6c292'),
+    name: 'Manpreet',
+    dept: 'IT',
+    salary: 50000,
+    age: 20
+  },
+  {
+    _id: ObjectId('6ad8f267d87612eea4c6c293'),
+    name: 'Arvind',
+    dept: 'Sales',
+    salary: 35000,
+    age: 18
+  },
+  {
+    _id: ObjectId('6ad8f267d87612eea4c6c294'),
+    name: 'Mankirat',
+    dept: 'Cyber',
+    salary: 50000,
+    age: 20
+  },
+  {
+    _id: ObjectId('6ad8f267d87612eea4c6c295'),
+    name: 'Shivani',
+    dept: 'Sales',
+    salary: 38000,
+    age: 21
+  },
+  {
+    _id: ObjectId('6ad8f267d87612eea4c6c296'),
+    name: 'Shreya',
+    dept: 'IT',
+    salary: 50000,
+    age: 20
+  },
+  {
+    _id: ObjectId('6ad8f267d87612eea4c6c297'),
+    name: 'Sakshi',
+    dept: 'HR',
+    salary: 80000,
+    age: 20
+  },
+  {
+    _id: ObjectId('6ad8f267d87612eea4c6c298'),
+    name: 'Ravi',
+    dept: 'Sales',
+    salary: 38000,
+    age: 20
+  }
+]
+employee> db.emp.aggregate([
+| {$group:{
+|     _id:"$dept",
+|     avgSalary:{$avg:"$salary"}}}])
+[
+  { _id: 'HR', avgSalary: 80000 },
+  { _id: 'Cyber', avgSalary: 50000 },
+  { _id: 'IT', avgSalary: 50000 },
+  { _id: 'Sales', avgSalary: 37000 }
+]
+employee> db.emp.aggregate([
+|   {
+|     $group: {
+|       _id: "$dept",
+|       avgSalary: { $avg: "$salary" }
+|     }
+|   },
+|   {
+|     $sort: { avgSalary: -1 }
+|   },
+|   {
+|     $skip: 1
+|   },
+|   {
+|     $limit: 1
+|   }
+| ])
+[ { _id: 'Cyber', avgSalary: 50000 } ]
+employee>
