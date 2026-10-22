@@ -456,3 +456,38 @@ college> db.students.aggregate([ { $group: { _id: "$course", averageAge: { $avg:
 college> db.students.aggregate([ { $group: { _id: "$course", averageAge: { $avg: "$age" } } },{$sort:{averageAge:-1}},{$limit:1}])
 [ { _id: null, averageAge: 24 } ]
 college>
+
+## 22-10-2026 - class work
+
+Microsoft Windows [Version 10.0.26300.9711]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\MANPREET KAUR>mongosh
+Current Mongosh Log ID: 6ada4990f06fe39664d9c00e
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.12.0
+Using MongoDB:          8.3.11
+Using Mongosh:          2.12.0
+mongosh 2.13.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-10-19T11:21:57.695+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use college
+switched to db college
+college> db.students.aggregate([ { $match:{age:{$gte:20}}}, { $count: "Total_students"}])
+[ { Total_students: 10 } ]
+college> db.students.aggregate([
+| {$unwind:"$skills"},
+| {$group:{
+| _id:"$skills",
+| studentCount:{$sum:1}}}])
+[
+  { _id: 'React', studentCount: 1 },
+  { _id: 'Javascript', studentCount: 1 },
+  { _id: 'NodeJS', studentCount: 1 }
+]
+college>
