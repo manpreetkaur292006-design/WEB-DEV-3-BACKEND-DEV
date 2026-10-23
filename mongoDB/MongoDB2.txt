@@ -1,0 +1,270 @@
+## 23-10-2026
+
+Microsoft Windows [Version 10.0.26300.9711]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\MANPREET KAUR>mongosh
+Current Mongosh Log ID: 6adad84aba93b661ea894f7a
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.12.0
+Using MongoDB:          8.3.11
+Using Mongosh:          2.12.0
+mongosh 2.13.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-10-19T11:21:57.695+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use college
+switched to db college
+college> show collections
+students
+college> db.createCollections("courses")
+TypeError: db.createCollections is not a function
+college> db.createCollection("courses")
+{ ok: 1 }
+college> db.courses.insertOne({courseID:"101",name:"Full stack Development"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6adade90ba93b661ea894f7b')
+}
+college> db.courses.find()
+[
+  {
+    _id: ObjectId('6adade90ba93b661ea894f7b'),
+    courseID: '101',
+    name: 'Full stack Development'
+  }
+]
+college> db.students.insertOne({name:"Rahul",courseID:"101"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6adadff2ba93b661ea894f7c')
+}
+college> db.students.aggregate([
+| {$lookup:{
+| from:"courses",
+| localField:"courseID",
+| foreignField:"courseID",
+| as:"courseDetails"}}])
+[
+  {
+    _id: ObjectId('6aba11be1b63b5899d63e54d'),
+    name: 'Manpreet',
+    age: 20,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    sem: 4,
+    department: 'SOET',
+    semester: 4,
+    courseDetails: []
+  },
+  {
+    _id: ObjectId('6abcd0817a664a1af0d9d108'),
+    name: 'Shivani',
+    age: 21,
+    course: 'B.Tech CSE',
+    city: 'Adampur',
+    department: 'SOET',
+    semester: 4,
+    courseDetails: []
+  },
+  {
+    _id: ObjectId('6abcd0817a664a1af0d9d109'),
+    name: 'Bhavneet',
+    age: 21,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    department: 'SOET',
+    semester: 4,
+    courseDetails: []
+  },
+  {
+    _id: ObjectId('6abcd0817a664a1af0d9d10a'),
+    name: 'Arvind',
+    age: 18,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    department: 'SOET',
+    semester: 4,
+    courseDetails: []
+  },
+  {
+    _id: ObjectId('6abcd7037a664a1af0d9d10d'),
+    name: 'MNO',
+    age: 25,
+    course: 'B.Tech CSE',
+    city: 'Adampur',
+    department: 'SOET',
+    semester: 4,
+    courseDetails: []
+  },
+  {
+    _id: ObjectId('6ad7154f557b23d43849ea6b'),
+    name: 'Manpreet',
+    age: 20,
+    course: 'B.Tech CSE',
+    city: 'Jalandhar',
+    sem: 3,
+    department: 'SOET',
+    courseDetails: []
+  },
+  {
+    _id: ObjectId('6ad715c4557b23d43849ea6c'),
+    name: 'ABC',
+    course: 'BCA',
+    age: 18,
+    courseDetails: []
+  },
+  {
+    _id: ObjectId('6ad715c4557b23d43849ea6d'),
+    name: 'XYZ',
+    course: 'BA',
+    age: 25,
+    courseDetails: []
+  },
+  {
+    _id: ObjectId('6ad71ae7557b23d43849ea6f'),
+    name: 'Test',
+    age: 31,
+    skills: [ 'Javascript', 'React', 'NodeJS' ],
+    courseDetails: []
+  },
+  {
+    _id: ObjectId('6ad71b30557b23d43849ea70'),
+    name: 'Test',
+    age: 31,
+    address: { city: 'Jalandhar', state: 'Punjab', pin: 144301 },
+    courseDetails: []
+  },
+  {
+    _id: ObjectId('6ad8ed38ac61a99ceb5762aa'),
+    name: 'Arvind',
+    age: 18,
+    course: 'BA',
+    city: 'Jalandhar',
+    courseDetails: []
+  },
+  {
+    _id: ObjectId('6ad8ed7bac61a99ceb5762ab'),
+    name: 'Manu',
+    age: 20,
+    courseDetails: []
+  },
+  {
+    _id: ObjectId('6ad8ed7bac61a99ceb5762ac'),
+    name: 'Manni',
+    age: 20,
+    courseDetails: []
+  },
+  {
+    _id: ObjectId('6ad8ed7bac61a99ceb5762ad'),
+    name: 'Bindu',
+    age: 18,
+    courseDetails: []
+  },
+  {
+    _id: ObjectId('6adadff2ba93b661ea894f7c'),
+    name: 'Rahul',
+    courseID: '101',
+    courseDetails: [
+      {
+        _id: ObjectId('6adade90ba93b661ea894f7b'),
+        courseID: '101',
+        name: 'Full stack Development'
+      }
+    ]
+  }
+]
+college> use employees
+switched to db employees
+employees> db.employees.insertMany([
+|     {
+|         name: "Amit",
+|         department: "Engineering",
+|         salary: 80000,
+|         age: 25
+|     },
+|     {
+|         name: "Priya",
+|         department: "Engineering",
+|         salary: 95000,
+|         age: 28
+|     },
+|     {
+|         name: "Rahul",
+|         department: "HR",
+|         salary: 60000,
+|         age: 30
+|     },
+|     {
+|         name: "Neha",
+|         department: "Engineering",
+|         salary: 110000,
+|         age: 32
+|     },
+|     {
+|         name: "Ravi",
+|         department: "HR",
+|         salary: 70000,
+|         age: 26
+|     }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6adae3ceba93b661ea894f7d'),
+    '1': ObjectId('6adae3ceba93b661ea894f7e'),
+    '2': ObjectId('6adae3ceba93b661ea894f7f'),
+    '3': ObjectId('6adae3ceba93b661ea894f80'),
+    '4': ObjectId('6adae3ceba93b661ea894f81')
+  }
+}
+employees> db.employees.aggregate([
+| {$match:{salary:{$gt:70000}}}])
+[
+  {
+    _id: ObjectId('6adae3ceba93b661ea894f7d'),
+    name: 'Amit',
+    department: 'Engineering',
+    salary: 80000,
+    age: 25
+  },
+  {
+    _id: ObjectId('6adae3ceba93b661ea894f7e'),
+    name: 'Priya',
+    department: 'Engineering',
+    salary: 95000,
+    age: 28
+  },
+  {
+    _id: ObjectId('6adae3ceba93b661ea894f80'),
+    name: 'Neha',
+    department: 'Engineering',
+    salary: 110000,
+    age: 32
+  }
+]
+employees> db.employees.aggregate([ { $match: { salary: { $gt: 70000 } } }, {$group:{id:"$department",empCount:{$sum:1},avgSalary:{$avg:"$salary"},maxSalary:{$max:"$salary"}}}])
+MongoServerError[Location40234]: The field 'id' must be an accumulator object
+employees> db.employees.aggregate([ { $match: { salary: { $gt: 70000 } } }, {$group:{_id:"$department",empCount:{$sum:1},avgSalary:{$avg:"$salary"},maxSalary:{$max:"$salary"}}}])
+[
+  {
+    _id: 'Engineering',
+    empCount: 3,
+    avgSalary: 95000,
+    maxSalary: 110000
+  }
+]
+employees> db.employees.aggregate([ { $match: { salary: { $gt: 70000 } } }, {$group:{_id:"$department",empCount:{$sum:1},avgSalary:{$avg:"$salary"},maxSalary:{$max:"$salary"}}},{$sort:{avgSalary:-1}},{$limit:2},{$project:{_id:0,department:"$_id",empCount:1,avgSalary:1,maxSalary:1}}])
+[
+  {
+    empCount: 3,
+    avgSalary: 95000,
+    maxSalary: 110000,
+    department: 'Engineering'
+  }
+]
+employees>
