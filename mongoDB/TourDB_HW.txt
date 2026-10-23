@@ -1,0 +1,46 @@
+Microsoft Windows [Version 10.0.26300.9711]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\MANPREET KAUR>mongosh
+Current Mongosh Log ID: 6adb8a739e172ae102a37e72
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.12.0
+Using MongoDB:          8.3.11
+Using Mongosh:          2.12.0
+mongosh 2.13.0 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-10-19T11:21:57.695+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+admin       40.00 KiB
+college    112.00 KiB
+config      36.00 KiB
+employee    40.00 KiB
+employees   40.00 KiB
+local       72.00 KiB
+students    72.00 KiB
+test> use tour&travel
+switched to db tour&travel
+tour&travel> show dbs
+admin       40.00 KiB
+college    112.00 KiB
+config      36.00 KiB
+employee    40.00 KiB
+employees   40.00 KiB
+local       72.00 KiB
+students    72.00 KiB
+tour&travel> db.createCollection("tours")
+{ ok: 1 }
+tour&travel> db.createCollection("users")
+{ ok: 1 }
+tour&travel> db.createCollection("booking")
+{ ok: 1 }
+tour&travel> show collections
+booking
+tours
+users
+tour&travel>
