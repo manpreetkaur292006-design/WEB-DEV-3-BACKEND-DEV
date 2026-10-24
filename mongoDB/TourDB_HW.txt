@@ -43,4 +43,50 @@ tour&travel> show collections
 booking
 tours
 users
+
+tour&travel> db.tour.insertMany([{name:"City Exploration",description:"Discover the vibrant city life and cultural landmarks.",destination:"Maldives",duration:"2 days",price:199},{name:"Safari Adventure",description:"Experience the thrill of a wildlife safari and encounter exotic animals.",destination:"Kenya",duration:"4 days",price:399},{name:"Safari Adventure",description:"Experience the thrill of a wildlife safari and encounter exotic animals.",destination:"Kenya",duration:"4 days",price:400},{name:"Safari Adventure",description:"Experience the thrill of a wildlife safari and encounter exotic animals.",destination:"Kenya",duration:"4 days",price:400}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6adc545ab4c1ffef5e1d03ee'),
+    '1': ObjectId('6adc545ab4c1ffef5e1d03ef'),
+    '2': ObjectId('6adc545ab4c1ffef5e1d03f0'),
+    '3': ObjectId('6adc545ab4c1ffef5e1d03f1')
+  }
+}
+tour&travel> db.tour.find()
+[
+  {
+    _id: ObjectId('6adc545ab4c1ffef5e1d03ee'),
+    name: 'City Exploration',
+    description: 'Discover the vibrant city life and cultural landmarks.',
+    destination: 'Maldives',
+    duration: '2 days',
+    price: 199
+  },
+  {
+    _id: ObjectId('6adc545ab4c1ffef5e1d03ef'),
+    name: 'Safari Adventure',
+    description: 'Experience the thrill of a wildlife safari and encounter exotic animals.',
+    destination: 'Kenya',
+    duration: '4 days',
+    price: 399
+  },
+  {
+    _id: ObjectId('6adc545ab4c1ffef5e1d03f0'),
+    name: 'Safari Adventure',
+    description: 'Experience the thrill of a wildlife safari and encounter exotic animals.',
+    destination: 'Kenya',
+    duration: '4 days',
+    price: 400
+  },
+  {
+    _id: ObjectId('6adc545ab4c1ffef5e1d03f1'),
+    name: 'Safari Adventure',
+    description: 'Experience the thrill of a wildlife safari and encounter exotic animals.',
+    destination: 'Kenya',
+    duration: '4 days',
+    price: 400
+  }
+]
 tour&travel>
